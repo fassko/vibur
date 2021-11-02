@@ -8,66 +8,6 @@
 import SwiftUI
 import CoreData
 
-import Combine
-
-class NewEventViewModel: ObservableObject {
-  @Published var experience = ""
-  @Published var aware = false
-  @Published var feelings = ""
-  @Published var moods = ""
-  @Published var thoughts = ""
-  @Published var thoughtsWriting = ""
-  
-  @Published var saveButtonDisabled = true
-  
-  private var anyCancellables = Set<AnyCancellable>()
-  
-  private let context: NSManagedObjectContext
-  let pleasant: Bool
-  
-  init(pleasant: Bool, context: NSManagedObjectContext) {
-    self.context = context
-    self.pleasant = pleasant
-    let firstFields = Publishers.CombineLatest4($experience, $feelings, $moods, $thoughts)
-      .map { experience, feelings, moods, thoughts in
-        experience.isNotEmpty && feelings.isNotEmpty && moods.isNotEmpty && thoughts.isNotEmpty
-      }
-    
-    let thoughtsWritingNotEmpty = $thoughtsWriting.map(\.isNotEmpty)
-    
-    firstFields.combineLatest(thoughtsWritingNotEmpty)
-      .map {
-        $0 && $1
-      }
-      .map { !$0 }
-      .receive(on: DispatchQueue.main)
-      .sink { [weak self] empty in
-        self?.saveButtonDisabled = empty
-      }
-      .store(in: &anyCancellables)
-  }
-  
-  func save(completion: () -> ()) {
-    let event = Event(context: context)
-    event.timestamp = Date()
-    event.pleasant = pleasant
-    event.experience = experience
-    event.aware = aware
-    event.feelings = feelings
-    event.moods = moods
-    event.thoughts = thoughts
-    event.thoughtsWriting = thoughtsWriting
-    
-    do {
-      try context.save()
-      completion()
-    } catch {
-      let nsError = error as NSError
-      fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-    }
-  }
-}
-
 struct NewEventView: View {
   @Environment(\.presentationMode) var presentationMode
   @Environment(\.managedObjectContext) private var viewContext

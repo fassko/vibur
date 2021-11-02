@@ -32,9 +32,6 @@ struct PersistenceController {
   
   init(inMemory: Bool = false) {
     container = NSPersistentCloudKitContainer(name: "Vibur")
-    if inMemory {
-      container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
-    }
     
     guard let description = container.persistentStoreDescriptions.first else {
       fatalError("###\(#function): Failed to retrieve a persistent store description.")

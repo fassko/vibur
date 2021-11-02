@@ -17,45 +17,16 @@ struct EventsListView: View {
   
   let pleasant: Bool
   
-  var title: String {
-    "\(pleasant ? "Pleasant" : "Unpleasant") Events"
-  }
-  
   init(pleasant: Bool) {
     self.pleasant = pleasant
     
-    _events = FetchRequest(
-      sortDescriptors: [NSSortDescriptor(keyPath: \Event.timestamp, ascending: true)],
-      predicate: NSPredicate(format: "pleasant == %@", NSNumber(value: pleasant))
-    )
+    _events = Event.pleasantFetchRequest(pleasant: pleasant)
   }
   
   var body: some View {
     ZStack {
-      Button("Add") {
-        showAddEventView = true
-      }
-      .keyboardShortcut("n")
-      .opacity(0)
-      
-      List {
-        ForEach(events) { event in
-          NavigationLink {
-            EventDetailsView(event: .init(event: event))
-          } label: {
-            VStack(alignment: .leading, spacing: 10) {
-              Text(event.timestamp!, formatter: .itemFormatter)
-                .font(.subheadline)
-              
-              Text(event.experience ?? "")
-                .lineLimit(3)
-                .font(.body)
-            }
-            .padding(.vertical, 5)
-          }
-        }
-        .onDelete(perform: deleteItems)
-      }
+      addButton
+      eventsList
     }
     .toolbar {
       ToolbarItem(placement: .navigationBarTrailing) {
@@ -72,6 +43,41 @@ struct EventsListView: View {
     .navigationTitle(title)
     .sheet(isPresented: $showAddEventView) {
       NewEventView(pleasant: pleasant, context: viewContext)
+    }
+  }
+}
+
+private extension EventsListView {
+  private var title: String {
+    "\(pleasant ? "Pleasant" : "Unpleasant") Events"
+  }
+  
+  private var addButton: some View {
+    Button("Add") {
+      showAddEventView = true
+    }
+    .keyboardShortcut("n")
+    .opacity(0)
+  }
+  
+  private var eventsList: some View {
+    List {
+      ForEach(events) { event in
+        NavigationLink {
+          EventDetailsView(event: .init(event: event))
+        } label: {
+          VStack(alignment: .leading, spacing: 10) {
+            Text(event.timestamp!, formatter: .itemFormatter)
+              .font(.subheadline)
+            
+            Text(event.experience ?? "")
+              .lineLimit(3)
+              .font(.body)
+          }
+          .padding(.vertical, 5)
+        }
+      }
+      .onDelete(perform: deleteItems)
     }
   }
   
