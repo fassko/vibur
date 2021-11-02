@@ -32,25 +32,39 @@ struct NewEventView: View {
     NavigationView {
       Form {
         Section {
-          TextField("What was the experience?", text: $viewModel.experience)
+          Group {
+          Text("What was the experience?")
+          TextField("Your experience", text: $viewModel.experience)
             .focused($focusedField, equals: .experience)
             .onAppear {
               focusedField = .experience
             }
+          }
           
           Toggle("Were you aware of the \(viewModel.pleasant ? "pleasant" : "unpleasant") feelings while the event was happening?", isOn: $viewModel.aware)
+            .padding(.top)
           
-          TextField("How did your body feel, in detail, during this experience?", text: $viewModel.feelings)
-          TextField("What moods and emotions were present?", text: $viewModel.moods)
-          TextField("What thoughts were present?", text: $viewModel.thoughts)
-          TextField("What thoughts are here as you write this down now?", text: $viewModel.thoughtsWriting)
+          Text("How did your body feel, in detail, during this experience?")
+            .padding(.top)
+          TextField("", text: $viewModel.feelings)
+          
+          Text("What moods and emotions were present?")
+          TextField("", text: $viewModel.moods)
+          
+          Text("What thoughts were present?")
+            .padding(.top)
+          TextField("", text: $viewModel.thoughts)
+          
+          Text("What thoughts are here as you write this down now?")
+            .padding(.top)
+          TextField("", text: $viewModel.thoughtsWriting)
         }
         
         Button("Save", action: save)
           .keyboardShortcut(.defaultAction)
           .disabled(viewModel.saveButtonDisabled)
       }
-      .navigationTitle("Add New \(viewModel.pleasant ? "Pleasant" : "Unpleasant") Event")
+      .navigationTitle("New \(viewModel.pleasant ? "Pleasant" : "Unpleasant") Event")
       .toolbar {
         ToolbarItem {
           Button(action: closeWindow) {
