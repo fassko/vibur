@@ -25,7 +25,7 @@ struct AboutView: View {
       Text("Be aware of an unpleasant event at the time it is happening. Use these questions to focus your awareness on the details of the experience as it is happening. Write it down later.\n\nTry to record at least one unpleasant event each day.")
         .multilineTextAlignment(.center)
       
-      Text("This application is developed and maintained by [Kristaps Grinbergs](https://kristaps.me/).")
+      Text("This application is developed and maintained by [Kristaps Grinbergs](https://kristaps.me/)")
         .multilineTextAlignment(.center)
       
       Spacer()
