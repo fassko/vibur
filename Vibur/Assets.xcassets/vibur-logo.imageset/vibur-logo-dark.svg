@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="479px" height="317px" viewBox="0 0 479 317" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>vibur-logo-dark</title>
+    <defs>
+        <filter x="-20.0%" y="-30.3%" width="140.1%" height="160.6%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="10" dy="20" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="15" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.312669837   0 0 0 0 0.312669837   0 0 0 0 0.312669837  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <radialGradient cx="50%" cy="1.90768482e-15%" fx="50%" fy="1.90768482e-15%" r="272%" gradientTransform="translate(0.500000,0.000000),scale(1.000000,0.367647),rotate(90.000000),translate(-0.500000,-0.000000)" id="radialGradient-2">
+            <stop stop-color="#CACACA" stop-opacity="0.5" offset="0%"></stop>
+            <stop stop-color="#000000" stop-opacity="0.5" offset="100%"></stop>
+        </radialGradient>
+        <path d="M238.583392,262 C253.309814,262 264,216.177685 264,191.777109 C264,167.376533 249.428129,126 238.040037,126 C226.651944,126 213.916922,173.000564 214.000821,194 C214.084719,214.999436 223.85697,262 238.583392,262 Z" id="path-3"></path>
+        <radialGradient cx="50%" cy="13.9878539%" fx="50%" fy="13.9878539%" r="106.672343%" gradientTransform="translate(0.500000,0.139879),scale(0.661795,1.000000),rotate(90.000000),translate(-0.500000,-0.139879)" id="radialGradient-4">
+            <stop stop-color="#CACACA" stop-opacity="0.5" offset="0%"></stop>
+            <stop stop-color="#000000" stop-opacity="0.5" offset="100%"></stop>
+        </radialGradient>
+        <path d="M0,175.778939 L82.4764004,142.071752 L77.6727496,57.3665639 L165.724774,84.6344787 L240.036624,0 L314.614411,84.6344787 L400.505852,57.3665639 L400.505852,142.071752 L479,175.778939 C440.126752,232.7786 390.85854,278.101776 331.195362,311.748467 C309.329062,323.143685 283.132965,315.994176 252.607071,290.299939 C280.977088,259.112364 295.162097,228.748948 295.162097,199.209689 C295.162097,154.9008 249.325696,114.82628 239.337359,114.82628 C229.349022,114.82628 184.598108,158.5 184.598108,199.209689 C184.598108,226.349481 199.51508,256.712898 229.349022,290.299939 C202.320543,312.725829 172.546225,319.875338 140.026066,311.748467 C89.1652663,275.966687 42.4899109,230.643511 0,175.778939 Z" id="path-5"></path>
+    </defs>
+    <g id="vibur-logo-dark" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-Copy" filter="url(#filter-1)">
+            <g id="Oval-Copy">
+                <use fill="#737373" xlink:href="#path-3"></use>
+                <use fill="url(#radialGradient-2)" xlink:href="#path-3"></use>
+            </g>
+            <g id="Path-2-Copy">
+                <use fill="#737373" xlink:href="#path-5"></use>
+                <use fill="url(#radialGradient-4)" xlink:href="#path-5"></use>
+            </g>
+        </g>
+    </g>
+</svg>

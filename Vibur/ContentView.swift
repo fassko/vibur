@@ -16,8 +16,11 @@ struct ContentView: View {
     animation: .default)
   private var items: FetchedResults<Event>
   
-  private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
-  private var isPortrait : Bool { UIDevice.current.orientation.isPortrait }
+  private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom
+  }
+  
+  private var isPortrait : Bool { UIDevice.current.orientation.isPortrait
+  }
   
   var body: some View {
     NavigationView {
@@ -28,6 +31,10 @@ struct ContentView: View {
         
         NavigationLink(destination: EventsListView(pleasant: true)) {
           Label("Pleasant Events", systemImage: "plus.square")
+        }
+        
+        NavigationLink(destination: AboutView()) {
+          Label("About", systemImage: "info.circle")
         }
       }
       .listStyle(SidebarListStyle())
@@ -46,7 +53,13 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
-      .previewInterfaceOrientation(.landscapeRight)
+    Group {
+      ContentView()
+        .previewDevice("iPhone 13 Pro")
+      
+      ContentView()
+        .previewDevice("iPad Pro (11-inch) (3rd generation)")
+        .previewInterfaceOrientation(.landscapeRight)
+    }
   }
 }
