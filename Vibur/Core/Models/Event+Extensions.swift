@@ -12,7 +12,7 @@ import SwiftUI
 extension Event {
   static func pleasantFetchRequest(pleasant: Bool) -> FetchRequest<Event> {
     FetchRequest(
-      sortDescriptors: [NSSortDescriptor(keyPath: \Event.timestamp, ascending: true)],
+      sortDescriptors: [NSSortDescriptor(keyPath: \Event.timestamp, ascending: false)],
       predicate: NSPredicate(format: "pleasant == %@", NSNumber(value: pleasant))
     )
   }
