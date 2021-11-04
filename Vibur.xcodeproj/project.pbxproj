@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6319BF572729E6AA0034E867 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6319BF562729E6AA0034E867 /* String+Extensions.swift */; };
+		6364C4232734774C00848556 /* ViburTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364C4222734774C00848556 /* ViburTextEditor.swift */; };
 		638334D12731CD4A009DFD0D /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638334D02731CD4A009DFD0D /* AboutView.swift */; };
 		63A8ECE92728842A002423F2 /* Formatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8ECE82728842A002423F2 /* Formatter+Extensions.swift */; };
 		63A8ECF0272888E1002423F2 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A8ECEF272888E1002423F2 /* CloudKit.framework */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		6319BF562729E6AA0034E867 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		6364C4222734774C00848556 /* ViburTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViburTextEditor.swift; sourceTree = "<group>"; };
 		638334D02731CD4A009DFD0D /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		63A8ECE82728842A002423F2 /* Formatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Extensions.swift"; sourceTree = "<group>"; };
 		63A8ECED272888BE002423F2 /* Vibur.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vibur.entitlements; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				63F55DA02717698D001BC74A /* NewEventView.swift */,
+				6364C4222734774C00848556 /* ViburTextEditor.swift */,
 				63E1917C27306FE4008F979B /* NewEventViewModel.swift */,
 			);
 			path = "New Event";
@@ -220,6 +223,7 @@
 			files = (
 				6319BF572729E6AA0034E867 /* String+Extensions.swift in Sources */,
 				63F55D9527175B75001BC74A /* Persistence.swift in Sources */,
+				6364C4232734774C00848556 /* ViburTextEditor.swift in Sources */,
 				63F55D9F27175FAB001BC74A /* EventsListView.swift in Sources */,
 				63A8ECE92728842A002423F2 /* Formatter+Extensions.swift in Sources */,
 				638334D12731CD4A009DFD0D /* AboutView.swift in Sources */,
@@ -362,7 +366,7 @@
 				CODE_SIGN_ENTITLEMENTS = Vibur/Vibur.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_ASSET_PATHS = "\"Vibur/Preview Content\"";
 				DEVELOPMENT_TEAM = 3SGNZQGS68;
 				ENABLE_PREVIEWS = YES;
@@ -397,7 +401,7 @@
 				CODE_SIGN_ENTITLEMENTS = Vibur/Vibur.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_ASSET_PATHS = "\"Vibur/Preview Content\"";
 				DEVELOPMENT_TEAM = 3SGNZQGS68;
 				ENABLE_PREVIEWS = YES;

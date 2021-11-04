@@ -8,13 +8,24 @@
 import SwiftUI
 
 struct ViburTextEditor: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+  @Binding var text: String
+  @FocusState var focusedField: Field?
+  let field: Field
+  
+  var body: some View {
+    TextEditor(text: $text)
+      .padding(.horizontal, 5)
+      .padding(.vertical, 3)
+      .overlay(
+        RoundedRectangle(cornerRadius: 10)
+          .stroke(.tertiary, lineWidth: 1)
+      )
+      .focused($focusedField, equals: field)
+  }
 }
 
 struct ViburTextEditor_Previews: PreviewProvider {
-    static var previews: some View {
-        ViburTextEditor()
-    }
+  static var previews: some View {
+    ViburTextEditor(text: .constant(""), field: .experience)
+  }
 }
