@@ -8,19 +8,21 @@
 import SwiftUI
 import CoreData
 
+enum Field: Int, Hashable {
+  case experience
+  case feelings
+  case moods
+  case thoughts
+  case thoughtsWriting
+}
+
 struct NewEventView: View {
   @Environment(\.presentationMode) var presentationMode
   @Environment(\.managedObjectContext) private var viewContext
   
   @ObservedObject private var viewModel: NewEventViewModel
   
-  private enum Field: Int, Hashable {
-    case experience
-    case feelings
-    case moods
-    case thoughts
-    case thoughtsWriting
-  }
+  
   
   @FocusState private var focusedField: Field?
   
@@ -41,10 +43,10 @@ struct NewEventView: View {
               .onTapGesture {
                 focusedField = .experience
               }
-                        
-            TextField("", text: $viewModel.experience)
-              .textFieldStyle(RoundedTextFieldStyle())
-              .focused($focusedField, equals: .experience)
+            
+            ViburTextEditor(text: $viewModel.experience,
+                            focusedField: _focusedField,
+                            field: .experience)
           }
           
           Toggle(isOn: $viewModel.aware) {
@@ -59,9 +61,9 @@ struct NewEventView: View {
                 focusedField = .feelings
               }
             
-            TextField("", text: $viewModel.feelings)
-              .textFieldStyle(RoundedTextFieldStyle())
-              .focused($focusedField, equals: .feelings)
+            ViburTextEditor(text: $viewModel.feelings,
+                            focusedField: _focusedField,
+                            field: .feelings)
           }
 
           VStack(alignment: .leading, spacing: textFieldSpacing) {
@@ -71,9 +73,9 @@ struct NewEventView: View {
                 focusedField = .moods
               }
             
-            TextField("", text: $viewModel.moods)
-              .textFieldStyle(RoundedTextFieldStyle())
-              .focused($focusedField, equals: .moods)
+            ViburTextEditor(text: $viewModel.moods,
+                            focusedField: _focusedField,
+                            field: .moods)
           }
           
           VStack(alignment: .leading, spacing: textFieldSpacing) {
@@ -83,9 +85,9 @@ struct NewEventView: View {
                 focusedField = .thoughts
               }
             
-            TextField("", text: $viewModel.thoughts)
-              .textFieldStyle(RoundedTextFieldStyle())
-              .focused($focusedField, equals: .thoughts)
+            ViburTextEditor(text: $viewModel.thoughts,
+                            focusedField: _focusedField,
+                            field: .thoughts)
           }
           
           VStack(alignment: .leading, spacing: textFieldSpacing) {
@@ -95,9 +97,9 @@ struct NewEventView: View {
                 focusedField = .thoughtsWriting
               }
             
-            TextField("", text: $viewModel.thoughtsWriting)
-              .textFieldStyle(RoundedTextFieldStyle())
-              .focused($focusedField, equals: .thoughtsWriting)
+            ViburTextEditor(text: $viewModel.thoughtsWriting,
+                            focusedField: _focusedField,
+                            field: .thoughtsWriting)
           }
           
           Button(action: save) {
@@ -140,18 +142,6 @@ struct NewEventView: View {
   
   private func closeWindow() {
     presentationMode.wrappedValue.dismiss()
-  }
-}
-
-
-struct RoundedTextFieldStyle: TextFieldStyle {
-  func _body(configuration: TextField<Self._Label>) -> some View {
-    configuration
-      .padding(10)
-      .background(
-        RoundedRectangle(cornerRadius: 10, style: .continuous)
-          .stroke(.tertiary, lineWidth: 1)
-      )
   }
 }
 
