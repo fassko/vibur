@@ -19,14 +19,17 @@ class EventsListViewModel: ObservableObject {
   
   private let context: NSManagedObjectContext
   
-  @Published var ascending = false
+  var ascending = false {
+    didSet {
+      loadData()
+    }
+  }
   
   init(pleasant: Bool, context: NSManagedObjectContext) {
     self.context = context
     self.pleasant = pleasant
     
     loadData()
-    initListeners()
   }
   
   func loadData() {
@@ -55,15 +58,6 @@ class EventsListViewModel: ObservableObject {
         fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
       }
     }
-  }
-  
-  private func initListeners() {
-    $ascending
-      .removeDuplicates()
-      .sink { [weak self] _ in
-      self?.loadData()
-    }
-    .store(in: &anyCancellables)
   }
 }
 
@@ -94,13 +88,13 @@ struct EventsListView: View {
       ToolbarItem(placement: .navigationBarLeading) {
         Menu {
           Button {
-            eventsListViewModel.ascending = true
+            eventsListViewModel.ascending = false
           } label: {
             Label("Newest to Oldest", systemImage: "arrow.up")
           }
           
           Button {
-            eventsListViewModel.ascending = false
+            eventsListViewModel.ascending = true
           } label: {
             Label("Oldest to Newest", systemImage: "arrow.down")
           }

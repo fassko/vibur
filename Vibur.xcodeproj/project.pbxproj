@@ -366,7 +366,7 @@
 				CODE_SIGN_ENTITLEMENTS = Vibur/Vibur.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_ASSET_PATHS = "\"Vibur/Preview Content\"";
 				DEVELOPMENT_TEAM = 3SGNZQGS68;
 				ENABLE_PREVIEWS = YES;
@@ -401,7 +401,7 @@
 				CODE_SIGN_ENTITLEMENTS = Vibur/Vibur.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_ASSET_PATHS = "\"Vibur/Preview Content\"";
 				DEVELOPMENT_TEAM = 3SGNZQGS68;
 				ENABLE_PREVIEWS = YES;
