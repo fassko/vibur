@@ -58,7 +58,9 @@ class EventsListViewModel: ObservableObject {
   }
   
   private func initListeners() {
-    $ascending.sink { [weak self] _ in
+    $ascending
+      .removeDuplicates()
+      .sink { [weak self] _ in
       self?.loadData()
     }
     .store(in: &anyCancellables)
