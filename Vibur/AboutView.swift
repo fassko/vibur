@@ -35,12 +35,9 @@ struct AboutView: View {
   }
   
   private var logoWidth: CGFloat {
-    let idiom = UIDevice.current.userInterfaceIdiom
-    let isPortrait = UIDevice.current.orientation.isPortrait
-    
     let constant: CGFloat = {
-      if idiom == .pad {
-        if isPortrait {
+      if UIDevice.isIpad {
+        if UIDevice.isPortrait {
           return 3
         } else {
           return 4

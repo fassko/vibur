@@ -14,6 +14,7 @@
 		63A8ECF0272888E1002423F2 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A8ECEF272888E1002423F2 /* CloudKit.framework */; };
 		63BAA935272737B10027E3AC /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BAA934272737B10027E3AC /* EventDetailsView.swift */; };
 		63BAA93927273E8D0027E3AC /* EventItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BAA93827273E8D0027E3AC /* EventItem.swift */; };
+		63BE66902735CE4C00224558 /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BE668F2735CE4C00224558 /* UIDevice+Extensions.swift */; };
 		63E1917D27306FE4008F979B /* NewEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E1917C27306FE4008F979B /* NewEventViewModel.swift */; };
 		63E1918027307282008F979B /* Event+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E1917F27307282008F979B /* Event+Extensions.swift */; };
 		63F55D8C27175B73001BC74A /* ViburApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F55D8B27175B73001BC74A /* ViburApp.swift */; };
@@ -36,6 +37,7 @@
 		63A8ECF127288B0C002423F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		63BAA934272737B10027E3AC /* EventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsView.swift; sourceTree = "<group>"; };
 		63BAA93827273E8D0027E3AC /* EventItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventItem.swift; sourceTree = "<group>"; };
+		63BE668F2735CE4C00224558 /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extensions.swift"; sourceTree = "<group>"; };
 		63E1917C27306FE4008F979B /* NewEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewModel.swift; sourceTree = "<group>"; };
 		63E1917F27307282008F979B /* Event+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+Extensions.swift"; sourceTree = "<group>"; };
 		63F55D8827175B73001BC74A /* Vibur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vibur.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +87,7 @@
 				63A8ECEB272884C3002423F2 /* Models */,
 				63A8ECE82728842A002423F2 /* Formatter+Extensions.swift */,
 				6319BF562729E6AA0034E867 /* String+Extensions.swift */,
+				63BE668F2735CE4C00224558 /* UIDevice+Extensions.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 				638334D12731CD4A009DFD0D /* AboutView.swift in Sources */,
 				63E1917D27306FE4008F979B /* NewEventViewModel.swift in Sources */,
 				63F55D8E27175B73001BC74A /* ContentView.swift in Sources */,
+				63BE66902735CE4C00224558 /* UIDevice+Extensions.swift in Sources */,
 				63E1918027307282008F979B /* Event+Extensions.swift in Sources */,
 				63BAA93927273E8D0027E3AC /* EventItem.swift in Sources */,
 				63F55D9827175B75001BC74A /* Vibur.xcdatamodeld in Sources */,

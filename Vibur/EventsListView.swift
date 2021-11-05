@@ -32,11 +32,19 @@ struct EventsListView: View {
       ToolbarItem(placement: .navigationBarTrailing) {
         EditButton()
       }
-      ToolbarItem {
+      ToolbarItem(placement: .navigationBarTrailing) {
         Button {
           showAddEventView = true
         } label: {
           Label("Add Event", systemImage: "plus")
+        }
+      }
+      
+      ToolbarItem(placement: .navigationBarLeading) {
+        Button {
+          
+        } label: {
+          Label("Export", systemImage: "square.and.arrow.up")
         }
       }
     }

@@ -19,32 +19,48 @@ struct ContentView: View {
   private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom
   }
   
-  private var isPortrait : Bool { UIDevice.current.orientation.isPortrait
-  }
-  
   var body: some View {
-    NavigationView {
-      List {
-        NavigationLink(destination: EventsListView(pleasant: false)) {
-          Label("Unpleasant Events", systemImage: "minus.square")
+    if UIDevice.isIpad {
+      NavigationView {
+        List {
+          NavigationLink(destination: EventsListView(pleasant: false)) {
+            Label("Unpleasant Events", systemImage: "minus.square")
+          }
+          
+          NavigationLink(destination: EventsListView(pleasant: true)) {
+            Label("Pleasant Events", systemImage: "plus.square")
+          }
+          
+          NavigationLink(destination: AboutView()) {
+            Label("About", systemImage: "info.circle")
+          }
         }
-        
-        NavigationLink(destination: EventsListView(pleasant: true)) {
-          Label("Pleasant Events", systemImage: "plus.square")
-        }
-        
-        NavigationLink(destination: AboutView()) {
-          Label("About", systemImage: "info.circle")
-        }
-      }
-      .listStyle(SidebarListStyle())
-      .navigationTitle("Vibur")
-      
-      if !isPortrait {
-        EmptyView()
+        .listStyle(SidebarListStyle())
+        .navigationTitle("Vibur")
         
         Text("Select what kind of events you would like to add.")
           .font(.title)
+      }
+    } else {
+      TabView {
+        NavigationView {
+          EventsListView(pleasant: false)
+        }
+        .tabItem {
+          Label("Unpleasant", systemImage: "minus.square")
+        }
+        
+        NavigationView {
+          EventsListView(pleasant: true)
+        }
+        .tabItem {
+          Label("Pleasant", systemImage: "plus.square")
+        }
+        
+        AboutView()
+          .tabItem {
+            Label("About", systemImage: "info.circle")
+          }
       }
     }
   }
