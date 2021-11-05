@@ -16,7 +16,7 @@ struct AboutView: View {
       Image("vibur-logo")
         .resizable()
         .scaledToFit()
-        .frame(width: UIScreen.main.bounds.width/2)
+        .frame(width: logoWidth)
         .padding()
       
       Text("Unpleasant Events Calendar")
@@ -33,6 +33,25 @@ struct AboutView: View {
     .padding()
     .padding(.horizontal)
   }
+  
+  private var logoWidth: CGFloat {
+    let idiom = UIDevice.current.userInterfaceIdiom
+    let isPortrait = UIDevice.current.orientation.isPortrait
+    
+    let constant: CGFloat = {
+      if idiom == .pad {
+        if isPortrait {
+          return 3
+        } else {
+          return 4
+        }
+      } else {
+        return 2
+      }
+    }()
+    
+    return UIScreen.main.bounds.width/constant
+  }
 }
 
 struct AboutView_Previews: PreviewProvider {
@@ -45,6 +64,7 @@ struct AboutView_Previews: PreviewProvider {
       
       AboutView()
         .preferredColorScheme(.dark)
+.previewInterfaceOrientation(.landscapeLeft)
     }
   }
 }

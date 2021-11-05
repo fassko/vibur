@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="392px" height="308px" viewBox="0 0 392 308" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>launch-screen-image-light</title>
+    <defs>
+        <filter x="-38.4%" y="-58.0%" width="176.8%" height="216.1%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="10" dy="20" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="15" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.312669837   0 0 0 0 0.312669837   0 0 0 0 0.312669837  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <radialGradient cx="50%" cy="1.90768482e-15%" fx="50%" fy="1.90768482e-15%" r="268.571429%" gradientTransform="translate(0.500000,0.000000),scale(1.000000,0.372340),rotate(90.000000),translate(-0.500000,-0.000000)" id="radialGradient-2">
+            <stop stop-color="#CACACA" stop-opacity="0.5" offset="0%"></stop>
+            <stop stop-color="#000000" stop-opacity="0.5" offset="100%"></stop>
+        </radialGradient>
+        <path d="M124.779739,136.706949 C132.565611,136.706949 138.217523,112.786023 138.217523,100.048029 C138.217523,87.3100348 130.513361,65.7099698 124.492466,65.7099698 C118.471572,65.7099698 111.738554,90.2459846 111.782911,101.208459 C111.827268,112.170934 116.993866,136.706949 124.779739,136.706949 Z" id="path-3"></path>
+        <radialGradient cx="50%" cy="13.9878539%" fx="50%" fy="13.9878539%" r="106.672343%" gradientTransform="translate(0.500000,0.139879),scale(0.661631,1.000000),rotate(90.000000),translate(-0.500000,-0.139879)" id="radialGradient-4">
+            <stop stop-color="#CACACA" stop-opacity="0.5" offset="0%"></stop>
+            <stop stop-color="#000000" stop-opacity="0.5" offset="100%"></stop>
+        </radialGradient>
+        <path d="M0,91.7199284 L43.046138,74.1318099 L40.5390134,29.9333763 L86.4951847,44.1615381 L125.280075,0 L164.203764,44.1615381 L209.032282,29.9333763 L209.032282,74.1318099 L250,91.7199284 C229.711249,121.461858 203.99715,145.111098 172.857704,162.667651 C161.445231,168.613577 147.772946,164.883025 131.840851,151.475994 C146.64775,135.202588 154.051199,119.35922 154.051199,103.945891 C154.051199,80.8258963 130.128234,59.9153587 124.915114,59.9153587 C119.701995,59.9153587 96.345568,82.7039275 96.345568,103.945891 C96.345568,118.107199 104.131044,133.950567 119.701995,151.475994 C105.595273,163.177629 90.0554409,166.908181 73.082498,162.667651 C46.5371954,143.997027 22.1763627,120.347787 0,91.7199284 Z" id="path-5"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="launch-screen-light" transform="translate(1.000000, -268.000000)">
+            <g id="launch-screen-image-light" filter="url(#filter-1)" transform="translate(70.000000, 339.000000)">
+                <g id="Oval-Copy">
+                    <use fill="#000000" xlink:href="#path-3"></use>
+                    <use fill="url(#radialGradient-2)" xlink:href="#path-3"></use>
+                </g>
+                <g id="Path-2-Copy">
+                    <use fill="#000000" xlink:href="#path-5"></use>
+                    <use fill="url(#radialGradient-4)" xlink:href="#path-5"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

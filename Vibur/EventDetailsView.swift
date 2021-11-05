@@ -16,6 +16,7 @@ struct EventDetailsView: View {
       VStack(alignment: .leading, spacing: 15) {
         GroupBox("What was the experience?") {
           Text(event.experience)
+            .textSelection(.enabled)
         }
         .groupBoxStyle(CardGroupBoxStyle())
         
@@ -26,21 +27,25 @@ struct EventDetailsView: View {
         
         GroupBox("How did your body feel, in detail, during this experience?") {
           Text(event.feelings)
+            .textSelection(.enabled)
         }
         .groupBoxStyle(CardGroupBoxStyle())
         
         GroupBox("What moods and emotions were present?") {
           Text(event.moods)
+            .textSelection(.enabled)
         }
         .groupBoxStyle(CardGroupBoxStyle())
         
         GroupBox("What thoughts were present?") {
           Text(event.thoughts)
+            .textSelection(.enabled)
         }
         .groupBoxStyle(CardGroupBoxStyle())
         
         GroupBox("What thoughts are here as you write this down now?") {
           Text(event.thoughtsWriting)
+            .textSelection(.enabled)
         }
         .groupBoxStyle(CardGroupBoxStyle())
         
