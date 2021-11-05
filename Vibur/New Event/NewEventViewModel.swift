@@ -25,8 +25,6 @@ class NewEventViewModel: ObservableObject {
   
   private let context: NSManagedObjectContext
   
-  
-  
   init(pleasant: Bool, context: NSManagedObjectContext) {
     self.context = context
     self.pleasant = pleasant

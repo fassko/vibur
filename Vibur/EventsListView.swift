@@ -7,21 +7,70 @@
 
 import SwiftUI
 import CoreData
+import Combine
+
+
+class EventsListViewModel: ObservableObject {
+  @Published var events = [Event]()
+  
+  let pleasant: Bool
+  
+  private var anyCancellables = Set<AnyCancellable>()
+  
+  private let context: NSManagedObjectContext
+  
+  @Published var ascending = false
+  
+  init(pleasant: Bool, context: NSManagedObjectContext) {
+    self.context = context
+    self.pleasant = pleasant
+    
+    loadData()
+    initListeners()
+  }
+  
+  func loadData() {
+    let request = Event.fetchRequest()
+    request.sortDescriptors = [NSSortDescriptor(keyPath: \Event.timestamp, ascending: ascending)]
+    request.predicate = NSPredicate(format: "pleasant == %@", NSNumber(value: pleasant))
+    
+    do {
+      events = try context.fetch(request)
+    } catch {
+      print("Failed to fetch")
+    }
+  }
+  
+  func deleteItems(offsets: IndexSet) {
+    withAnimation {
+      offsets.map {
+        events[$0]
+      }.forEach(context.delete)
+      
+      do {
+        try context.save()
+        loadData()
+      } catch {
+        let nsError = error as NSError
+        fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+      }
+    }
+  }
+  
+  private func initListeners() {
+    $ascending.sink { [weak self] _ in
+      self?.loadData()
+    }
+    .store(in: &anyCancellables)
+  }
+}
 
 struct EventsListView: View {
   @Environment(\.managedObjectContext) private var viewContext
   
-  @FetchRequest private var events: FetchedResults<Event>
-  
   @State private var showAddEventView = false
   
-  let pleasant: Bool
-  
-  init(pleasant: Bool) {
-    self.pleasant = pleasant
-    
-    _events = Event.pleasantFetchRequest(pleasant: pleasant)
-  }
+  @ObservedObject var eventsListViewModel: EventsListViewModel
   
   var body: some View {
     ZStack {
@@ -41,6 +90,23 @@ struct EventsListView: View {
       }
       
       ToolbarItem(placement: .navigationBarLeading) {
+        Menu {
+          Button {
+            eventsListViewModel.ascending = true
+          } label: {
+            Label("Newest to Oldest", systemImage: "arrow.up")
+          }
+          
+          Button {
+            eventsListViewModel.ascending = false
+          } label: {
+            Label("Oldest to Newest", systemImage: "arrow.down")
+          }
+        } label: {
+          Label("More", systemImage: "ellipsis.circle")
+        }
+      }
+      ToolbarItem(placement: .navigationBarLeading) {
         Button {
           
         } label: {
@@ -49,15 +115,16 @@ struct EventsListView: View {
       }
     }
     .navigationTitle(title)
-    .sheet(isPresented: $showAddEventView) {
-      NewEventView(pleasant: pleasant, context: viewContext)
+    .sheet(isPresented: $showAddEventView, onDismiss: eventsListViewModel.loadData)  {
+      NewEventView(pleasant: eventsListViewModel.pleasant, context: viewContext)
     }
+    .onAppear(perform: eventsListViewModel.loadData)
   }
 }
 
 private extension EventsListView {
   private var title: String {
-    "\(pleasant ? "Pleasant" : "Unpleasant") Events"
+    "\(eventsListViewModel.pleasant ? "Pleasant" : "Unpleasant") Events"
   }
   
   private var addButton: some View {
@@ -70,7 +137,7 @@ private extension EventsListView {
   
   private var eventsList: some View {
     List {
-      ForEach(events) { event in
+      ForEach(eventsListViewModel.events) { event in
         NavigationLink {
           EventDetailsView(event: .init(event: event))
         } label: {
@@ -85,20 +152,7 @@ private extension EventsListView {
           .padding(.vertical, 5)
         }
       }
-      .onDelete(perform: deleteItems)
-    }
-  }
-  
-  private func deleteItems(offsets: IndexSet) {
-    withAnimation {
-      offsets.map { events[$0] }.forEach(viewContext.delete)
-      
-      do {
-        try viewContext.save()
-      } catch {
-        let nsError = error as NSError
-        fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-      }
+      .onDelete(perform: eventsListViewModel.deleteItems)
     }
   }
 }
@@ -106,7 +160,7 @@ private extension EventsListView {
 struct EventsListView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationView {
-      EventsListView(pleasant: true)
+      EventsListView(eventsListViewModel: EventsListViewModel(pleasant: true, context: PersistenceController.preview.container.viewContext))
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext).previewInterfaceOrientation(.landscapeLeft)
     }
     .navigationViewStyle(StackNavigationViewStyle())

@@ -23,11 +23,11 @@ struct ContentView: View {
     if UIDevice.isIpad {
       NavigationView {
         List {
-          NavigationLink(destination: EventsListView(pleasant: false)) {
+          NavigationLink(destination: EventsListView(eventsListViewModel: EventsListViewModel(pleasant: false, context: viewContext))) {
             Label("Unpleasant Events", systemImage: "minus.square")
           }
           
-          NavigationLink(destination: EventsListView(pleasant: true)) {
+          NavigationLink(destination: EventsListView(eventsListViewModel: EventsListViewModel(pleasant: true, context: viewContext))) {
             Label("Pleasant Events", systemImage: "plus.square")
           }
           
@@ -44,14 +44,14 @@ struct ContentView: View {
     } else {
       TabView {
         NavigationView {
-          EventsListView(pleasant: false)
+          EventsListView(eventsListViewModel: EventsListViewModel(pleasant: false, context: viewContext))
         }
         .tabItem {
           Label("Unpleasant", systemImage: "minus.square")
         }
         
         NavigationView {
-          EventsListView(pleasant: true)
+          EventsListView(eventsListViewModel: EventsListViewModel(pleasant: true, context: viewContext))
         }
         .tabItem {
           Label("Pleasant", systemImage: "plus.square")
