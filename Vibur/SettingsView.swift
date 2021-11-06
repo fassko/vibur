@@ -24,7 +24,9 @@ class SettingsViewModel: ObservableObject {
   
   func setupListeners() {
     $showNotificationSettingsUI
+      .dropFirst()
       .removeDuplicates()
+      .receive(on: DispatchQueue.main)
       .sink { [weak self] showNotificationSettingsUI in
         if showNotificationSettingsUI {
           self?.checkNotificationSettings()
@@ -37,6 +39,7 @@ class SettingsViewModel: ObservableObject {
     $notificationTime
       .removeDuplicates()
       .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
+      .receive(on: DispatchQueue.main)
       .sink { [weak self] in
         UserDefaultsConfig.pushNotificationTime = $0
         self?.scheduleNotification()
@@ -45,20 +48,21 @@ class SettingsViewModel: ObservableObject {
   }
   
   
-  private func checkNotificationSettings() {
+  func checkNotificationSettings() {
     UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
       guard
         settings.authorizationStatus == .authorized ||
           settings.authorizationStatus == .provisional
       else {
         self?.showNotificationSettingsUI = false
-        self?.authorizeNotifications()
+        self?.removeNotifications()
         return
       }
       
-      self?.showNotificationSettingsUI = true
-      
-      self?.authorizeNotifications()
+      DispatchQueue.main.async { [weak self] in
+        self?.showNotificationSettingsUI = true
+      }
+      self?.scheduleNotification()
     }
   }
   
@@ -85,6 +89,8 @@ class SettingsViewModel: ObservableObject {
     let content = UNMutableNotificationContent()
     content.title = "Vibur"
     content.body = "Please log your pleasant or unpleasant event"
+    content.sound = .default
+    content.categoryIdentifier = "eventsList"
     
     let request = UNNotificationRequest(
       identifier: UUID().uuidString,
@@ -120,6 +126,9 @@ struct SettingsView: View {
             .pickerStyle(.menu)
         }
       }
+    }
+    .onAppear {
+      settingsViewModel.checkNotificationSettings()
     }
     .navigationTitle("Settings")
   }
