@@ -18,6 +18,10 @@
 		638EC4CC2736A1BC00DE603A /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638EC4CB2736A1BC00DE603A /* ActivityView.swift */; };
 		638EC4D02736AC7E00DE603A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638EC4CF2736AC7E00DE603A /* LoadingView.swift */; };
 		638EC4D22736B3AB00DE603A /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638EC4D12736B3AB00DE603A /* Array+Extensions.swift */; };
+		638EC4D42736CB1A00DE603A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638EC4D32736CB1A00DE603A /* SettingsView.swift */; };
+		638EC4D62736CEC800DE603A /* Pushnotificationmanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638EC4D52736CEC800DE603A /* Pushnotificationmanager.swift */; };
+		638EC4DB2736D34000DE603A /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638EC4D82736D34000DE603A /* UserDefault.swift */; };
+		638EC4DC2736D34000DE603A /* UserDefaultsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638EC4D92736D34000DE603A /* UserDefaultsConfig.swift */; };
 		63A8ECE92728842A002423F2 /* Formatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8ECE82728842A002423F2 /* Formatter+Extensions.swift */; };
 		63A8ECF0272888E1002423F2 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A8ECEF272888E1002423F2 /* CloudKit.framework */; };
 		63BAA935272737B10027E3AC /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BAA934272737B10027E3AC /* EventDetailsView.swift */; };
@@ -46,6 +50,10 @@
 		638EC4CB2736A1BC00DE603A /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		638EC4CF2736AC7E00DE603A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		638EC4D12736B3AB00DE603A /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		638EC4D32736CB1A00DE603A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		638EC4D52736CEC800DE603A /* Pushnotificationmanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pushnotificationmanager.swift; sourceTree = "<group>"; };
+		638EC4D82736D34000DE603A /* UserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		638EC4D92736D34000DE603A /* UserDefaultsConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsConfig.swift; sourceTree = "<group>"; };
 		63A8ECE82728842A002423F2 /* Formatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Extensions.swift"; sourceTree = "<group>"; };
 		63A8ECED272888BE002423F2 /* Vibur.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vibur.entitlements; sourceTree = "<group>"; };
 		63A8ECEF272888E1002423F2 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -114,6 +122,15 @@
 			path = Sharing;
 			sourceTree = "<group>";
 		};
+		638EC4DD2736D34500DE603A /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				638EC4D82736D34000DE603A /* UserDefault.swift */,
+				638EC4D92736D34000DE603A /* UserDefaultsConfig.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
 		63A8ECEA272884BB002423F2 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,12 +144,14 @@
 		63A8ECEC27288507002423F2 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				638EC4DD2736D34500DE603A /* UserDefaults */,
 				638EC4C3273690A300DE603A /* UI */,
 				63A8ECE82728842A002423F2 /* Formatter+Extensions.swift */,
 				6319BF562729E6AA0034E867 /* String+Extensions.swift */,
 				63BE668F2735CE4C00224558 /* UIDevice+Extensions.swift */,
 				63BE6691273687A900224558 /* CoreDataStorage.swift */,
 				638EC4D12736B3AB00DE603A /* Array+Extensions.swift */,
+				638EC4D52736CEC800DE603A /* Pushnotificationmanager.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -179,6 +198,7 @@
 				63A8ECED272888BE002423F2 /* Vibur.entitlements */,
 				63F55D8B27175B73001BC74A /* ViburApp.swift */,
 				63F55D8D27175B73001BC74A /* ContentView.swift */,
+				638EC4D32736CB1A00DE603A /* SettingsView.swift */,
 				638334D02731CD4A009DFD0D /* AboutView.swift */,
 				638EC4BB27368EA800DE603A /* EventsListView */,
 				638EC4C02736904600DE603A /* EventDetails */,
@@ -270,11 +290,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6319BF572729E6AA0034E867 /* String+Extensions.swift in Sources */,
+				638EC4D42736CB1A00DE603A /* SettingsView.swift in Sources */,
+				638EC4DB2736D34000DE603A /* UserDefault.swift in Sources */,
 				638EC4BD27368EB300DE603A /* EventsListViewModel.swift in Sources */,
 				638EC4C22736905C00DE603A /* EventDetailsViewModel.swift in Sources */,
 				638EC4D22736B3AB00DE603A /* Array+Extensions.swift in Sources */,
 				63F55D9527175B75001BC74A /* Persistence.swift in Sources */,
 				6364C4232734774C00848556 /* ViburTextEditor.swift in Sources */,
+				638EC4DC2736D34000DE603A /* UserDefaultsConfig.swift in Sources */,
 				638EC4D02736AC7E00DE603A /* LoadingView.swift in Sources */,
 				63F55D9F27175FAB001BC74A /* EventsListView.swift in Sources */,
 				63A8ECE92728842A002423F2 /* Formatter+Extensions.swift in Sources */,
@@ -286,6 +309,7 @@
 				638EC4CA2736A1A800DE603A /* ActivityItem.swift in Sources */,
 				638EC4CC2736A1BC00DE603A /* ActivityView.swift in Sources */,
 				63F55D9827175B75001BC74A /* Vibur.xcdatamodeld in Sources */,
+				638EC4D62736CEC800DE603A /* Pushnotificationmanager.swift in Sources */,
 				63F55DA12717698D001BC74A /* NewEventView.swift in Sources */,
 				638EC4C5273690AF00DE603A /* CardGroupBoxStyle.swift in Sources */,
 				63F55D8C27175B73001BC74A /* ViburApp.swift in Sources */,
@@ -422,7 +446,7 @@
 				CODE_SIGN_ENTITLEMENTS = Vibur/Vibur.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_ASSET_PATHS = "\"Vibur/Preview Content\"";
 				DEVELOPMENT_TEAM = 3SGNZQGS68;
 				ENABLE_PREVIEWS = YES;
@@ -457,7 +481,7 @@
 				CODE_SIGN_ENTITLEMENTS = Vibur/Vibur.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_ASSET_PATHS = "\"Vibur/Preview Content\"";
 				DEVELOPMENT_TEAM = 3SGNZQGS68;
 				ENABLE_PREVIEWS = YES;

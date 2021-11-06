@@ -37,6 +37,10 @@ private extension ContentView {
           Label("Pleasant Events", systemImage: "hand.thumbsup.fill")
         }
         
+        NavigationLink(destination: SettingsView()) {
+          Label("Settings", systemImage: "gear")
+        }
+        
         NavigationLink(destination: AboutView()) {
           Label("About", systemImage: "info.circle")
         }
@@ -63,6 +67,13 @@ private extension ContentView {
       }
       .tabItem {
         Label("Pleasant", systemImage: "hand.thumbsup.fill")
+      }
+      
+      NavigationView {
+        SettingsView()
+      }
+      .tabItem {
+        Label("Settings", systemImage: "gear")
       }
       
       AboutView()
