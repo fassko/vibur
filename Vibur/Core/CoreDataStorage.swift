@@ -9,6 +9,8 @@ import Foundation
 import CoreData
 import Combine
 
+// https://www.donnywals.com/observing-changes-to-managed-objects-across-contexts-with-combine/
+
 class CoreDataStorage {
   // configure and create persistent container
   // viewContext.automaticallyMergesChangesFromParent is set to true

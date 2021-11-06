@@ -12,6 +12,9 @@ struct EventsListView: View {
   @Environment(\.managedObjectContext) private var context
   
   @State private var showAddEventView = false
+  @State var showLoading = false
+  @State private var item: ActivityItem?
+  @State private var showEmptyListAlert = false
   
   @ObservedObject var eventsListViewModel: EventsListViewModel
   
@@ -19,6 +22,7 @@ struct EventsListView: View {
     ZStack {
       addButton
       eventsList
+      LoadingView(isShowing: $showLoading)
     }
     .toolbar {
       ToolbarItem(placement: .navigationBarTrailing) {
@@ -50,22 +54,54 @@ struct EventsListView: View {
         }
       }
       ToolbarItem(placement: .navigationBarLeading) {
-        Button {
-          
-        } label: {
+        Button(action: generateCSV) {
           Label("Export", systemImage: "square.and.arrow.up")
         }
+        .activitySheet($item)
       }
     }
     .navigationTitle(title)
     .sheet(isPresented: $showAddEventView, onDismiss: eventsListViewModel.loadData)  {
       NewEventView(pleasant: eventsListViewModel.pleasant, context: context)
     }
+    .alert(isPresented: $showEmptyListAlert) {
+      Alert(title: Text("Vibur"), message: Text("There is nothing to export."))
+    }
     .onAppear(perform: eventsListViewModel.loadData)
   }
 }
 
 private extension EventsListView {
+  func generateCSV() {
+    showLoadingView()
+    
+    guard !eventsListViewModel.events.isEmpty else {
+      showEmptyListAlert = true
+      showLoading = false
+      return
+    }
+
+    eventsListViewModel.generateCSV { url in
+      item = ActivityItem(
+        items: url
+      )
+    }
+    
+    hideLoadingView()
+  }
+  
+  func showLoadingView() {
+    withAnimation {
+      showLoading = true
+    }
+  }
+  
+  func hideLoadingView() {
+    withAnimation {
+      showLoading = false
+    }
+  }
+  
   func deleteItems(offsets: IndexSet) {
     withAnimation {
       eventsListViewModel.deleteItems(offsets: offsets)
