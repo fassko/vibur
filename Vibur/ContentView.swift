@@ -9,63 +9,69 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-  @Environment(\.managedObjectContext) private var viewContext
+  @Environment(\.managedObjectContext) private var context
   
   @FetchRequest(
     sortDescriptors: [NSSortDescriptor(keyPath: \Event.timestamp, ascending: true)],
     animation: .default)
   private var items: FetchedResults<Event>
   
-  private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom
-  }
-  
   var body: some View {
     if UIDevice.isIpad {
-      NavigationView {
-        List {
-          NavigationLink(destination: EventsListView(eventsListViewModel: EventsListViewModel(pleasant: false, context: viewContext))) {
-            Label("Unpleasant Events", systemImage: "minus.square")
-          }
-          
-          NavigationLink(destination: EventsListView(eventsListViewModel: EventsListViewModel(pleasant: true, context: viewContext))) {
-            Label("Pleasant Events", systemImage: "plus.square")
-          }
-          
-          NavigationLink(destination: AboutView()) {
-            Label("About", systemImage: "info.circle")
-          }
-        }
-        .listStyle(SidebarListStyle())
-        .navigationTitle("Vibur")
-        
-        Text("Select what kind of events you would like to add.")
-          .font(.title)
-      }
+      navigationView
     } else {
-      TabView {
-        NavigationView {
-          EventsListView(eventsListViewModel: EventsListViewModel(pleasant: false, context: viewContext))
-        }
-        .tabItem {
-          Label("Unpleasant", systemImage: "minus.square")
-        }
-        
-        NavigationView {
-          EventsListView(eventsListViewModel: EventsListViewModel(pleasant: true, context: viewContext))
-        }
-        .tabItem {
-          Label("Pleasant", systemImage: "plus.square")
-        }
-        
-        AboutView()
-          .tabItem {
-            Label("About", systemImage: "info.circle")
-          }
-      }
+      tabView
     }
   }
 }
 
+private extension ContentView {
+  var navigationView: some View {
+    NavigationView {
+      List {
+        NavigationLink(destination: EventsListView(eventsListViewModel: EventsListViewModel(pleasant: false, context: context))) {
+          Label("Unpleasant Events", systemImage: "hand.thumbsdown.fill")
+        }
+        
+        NavigationLink(destination: EventsListView(eventsListViewModel: EventsListViewModel(pleasant: true, context: context))) {
+          Label("Pleasant Events", systemImage: "hand.thumbsup.fill")
+        }
+        
+        NavigationLink(destination: AboutView()) {
+          Label("About", systemImage: "info.circle")
+        }
+      }
+      .listStyle(SidebarListStyle())
+      .navigationTitle("Vibur")
+      
+      Text("Select what kind of events you would like to add.")
+        .font(.title)
+    }
+  }
+  
+  var tabView: some View {
+    TabView {
+      NavigationView {
+        EventsListView(eventsListViewModel: EventsListViewModel(pleasant: false, context: context))
+      }
+      .tabItem {
+        Label("Unpleasant", systemImage: "hand.thumbsdown.fill")
+      }
+      
+      NavigationView {
+        EventsListView(eventsListViewModel: EventsListViewModel(pleasant: true, context: context))
+      }
+      .tabItem {
+        Label("Pleasant", systemImage: "hand.thumbsup.fill")
+      }
+      
+      AboutView()
+        .tabItem {
+          Label("About", systemImage: "info.circle")
+        }
+    }
+  }
+}
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {

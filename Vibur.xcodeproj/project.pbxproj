@@ -10,11 +10,15 @@
 		6319BF572729E6AA0034E867 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6319BF562729E6AA0034E867 /* String+Extensions.swift */; };
 		6364C4232734774C00848556 /* ViburTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364C4222734774C00848556 /* ViburTextEditor.swift */; };
 		638334D12731CD4A009DFD0D /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638334D02731CD4A009DFD0D /* AboutView.swift */; };
+		638EC4BD27368EB300DE603A /* EventsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638EC4BC27368EB300DE603A /* EventsListViewModel.swift */; };
+		638EC4BF27368FC700DE603A /* Event+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638EC4BE27368FC700DE603A /* Event+Extensions.swift */; };
+		638EC4C22736905C00DE603A /* EventDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638EC4C12736905C00DE603A /* EventDetailsViewModel.swift */; };
+		638EC4C5273690AF00DE603A /* CardGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638EC4C4273690AF00DE603A /* CardGroupBoxStyle.swift */; };
 		63A8ECE92728842A002423F2 /* Formatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8ECE82728842A002423F2 /* Formatter+Extensions.swift */; };
 		63A8ECF0272888E1002423F2 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A8ECEF272888E1002423F2 /* CloudKit.framework */; };
 		63BAA935272737B10027E3AC /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BAA934272737B10027E3AC /* EventDetailsView.swift */; };
-		63BAA93927273E8D0027E3AC /* EventItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BAA93827273E8D0027E3AC /* EventItem.swift */; };
 		63BE66902735CE4C00224558 /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BE668F2735CE4C00224558 /* UIDevice+Extensions.swift */; };
+		63BE6692273687A900224558 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BE6691273687A900224558 /* CoreDataStorage.swift */; };
 		63E1917D27306FE4008F979B /* NewEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E1917C27306FE4008F979B /* NewEventViewModel.swift */; };
 		63F55D8C27175B73001BC74A /* ViburApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F55D8B27175B73001BC74A /* ViburApp.swift */; };
 		63F55D8E27175B73001BC74A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F55D8D27175B73001BC74A /* ContentView.swift */; };
@@ -30,13 +34,17 @@
 		6319BF562729E6AA0034E867 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		6364C4222734774C00848556 /* ViburTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViburTextEditor.swift; sourceTree = "<group>"; };
 		638334D02731CD4A009DFD0D /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		638EC4BC27368EB300DE603A /* EventsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListViewModel.swift; sourceTree = "<group>"; };
+		638EC4BE27368FC700DE603A /* Event+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+Extensions.swift"; sourceTree = "<group>"; };
+		638EC4C12736905C00DE603A /* EventDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewModel.swift; sourceTree = "<group>"; };
+		638EC4C4273690AF00DE603A /* CardGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGroupBoxStyle.swift; sourceTree = "<group>"; };
 		63A8ECE82728842A002423F2 /* Formatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Extensions.swift"; sourceTree = "<group>"; };
 		63A8ECED272888BE002423F2 /* Vibur.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vibur.entitlements; sourceTree = "<group>"; };
 		63A8ECEF272888E1002423F2 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		63A8ECF127288B0C002423F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		63BAA934272737B10027E3AC /* EventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsView.swift; sourceTree = "<group>"; };
-		63BAA93827273E8D0027E3AC /* EventItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventItem.swift; sourceTree = "<group>"; };
 		63BE668F2735CE4C00224558 /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extensions.swift"; sourceTree = "<group>"; };
+		63BE6691273687A900224558 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		63E1917C27306FE4008F979B /* NewEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewModel.swift; sourceTree = "<group>"; };
 		63F55D8827175B73001BC74A /* Vibur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vibur.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63F55D8B27175B73001BC74A /* ViburApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViburApp.swift; sourceTree = "<group>"; };
@@ -61,30 +69,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		638EC4BB27368EA800DE603A /* EventsListView */ = {
+			isa = PBXGroup;
+			children = (
+				63F55D9E27175FAB001BC74A /* EventsListView.swift */,
+				638EC4BC27368EB300DE603A /* EventsListViewModel.swift */,
+			);
+			path = EventsListView;
+			sourceTree = "<group>";
+		};
+		638EC4C02736904600DE603A /* EventDetails */ = {
+			isa = PBXGroup;
+			children = (
+				63BAA934272737B10027E3AC /* EventDetailsView.swift */,
+				638EC4C12736905C00DE603A /* EventDetailsViewModel.swift */,
+			);
+			path = EventDetails;
+			sourceTree = "<group>";
+		};
+		638EC4C3273690A300DE603A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				638EC4C4273690AF00DE603A /* CardGroupBoxStyle.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		63A8ECEA272884BB002423F2 /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				63F55D9427175B75001BC74A /* Persistence.swift */,
+				638EC4BE27368FC700DE603A /* Event+Extensions.swift */,
 				63F55D9627175B75001BC74A /* Vibur.xcdatamodeld */,
 			);
 			path = Data;
 			sourceTree = "<group>";
 		};
-		63A8ECEB272884C3002423F2 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				63BAA93827273E8D0027E3AC /* EventItem.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		63A8ECEC27288507002423F2 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				63A8ECEB272884C3002423F2 /* Models */,
+				638EC4C3273690A300DE603A /* UI */,
 				63A8ECE82728842A002423F2 /* Formatter+Extensions.swift */,
 				6319BF562729E6AA0034E867 /* String+Extensions.swift */,
 				63BE668F2735CE4C00224558 /* UIDevice+Extensions.swift */,
+				63BE6691273687A900224558 /* CoreDataStorage.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -132,8 +160,8 @@
 				63F55D8B27175B73001BC74A /* ViburApp.swift */,
 				63F55D8D27175B73001BC74A /* ContentView.swift */,
 				638334D02731CD4A009DFD0D /* AboutView.swift */,
-				63F55D9E27175FAB001BC74A /* EventsListView.swift */,
-				63BAA934272737B10027E3AC /* EventDetailsView.swift */,
+				638EC4BB27368EA800DE603A /* EventsListView */,
+				638EC4C02736904600DE603A /* EventDetails */,
 				63E1917E27306FE8008F979B /* New Event */,
 				63A8ECEC27288507002423F2 /* Core */,
 				63F55D8F27175B75001BC74A /* Assets.xcassets */,
@@ -222,6 +250,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6319BF572729E6AA0034E867 /* String+Extensions.swift in Sources */,
+				638EC4BD27368EB300DE603A /* EventsListViewModel.swift in Sources */,
+				638EC4C22736905C00DE603A /* EventDetailsViewModel.swift in Sources */,
 				63F55D9527175B75001BC74A /* Persistence.swift in Sources */,
 				6364C4232734774C00848556 /* ViburTextEditor.swift in Sources */,
 				63F55D9F27175FAB001BC74A /* EventsListView.swift in Sources */,
@@ -230,10 +260,12 @@
 				63E1917D27306FE4008F979B /* NewEventViewModel.swift in Sources */,
 				63F55D8E27175B73001BC74A /* ContentView.swift in Sources */,
 				63BE66902735CE4C00224558 /* UIDevice+Extensions.swift in Sources */,
-				63BAA93927273E8D0027E3AC /* EventItem.swift in Sources */,
+				63BE6692273687A900224558 /* CoreDataStorage.swift in Sources */,
 				63F55D9827175B75001BC74A /* Vibur.xcdatamodeld in Sources */,
 				63F55DA12717698D001BC74A /* NewEventView.swift in Sources */,
+				638EC4C5273690AF00DE603A /* CardGroupBoxStyle.swift in Sources */,
 				63F55D8C27175B73001BC74A /* ViburApp.swift in Sources */,
+				638EC4BF27368FC700DE603A /* Event+Extensions.swift in Sources */,
 				63BAA935272737B10027E3AC /* EventDetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,7 +398,7 @@
 				CODE_SIGN_ENTITLEMENTS = Vibur/Vibur.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_ASSET_PATHS = "\"Vibur/Preview Content\"";
 				DEVELOPMENT_TEAM = 3SGNZQGS68;
 				ENABLE_PREVIEWS = YES;
@@ -401,7 +433,7 @@
 				CODE_SIGN_ENTITLEMENTS = Vibur/Vibur.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_ASSET_PATHS = "\"Vibur/Preview Content\"";
 				DEVELOPMENT_TEAM = 3SGNZQGS68;
 				ENABLE_PREVIEWS = YES;

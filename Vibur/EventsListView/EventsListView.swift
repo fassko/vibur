@@ -7,62 +7,9 @@
 
 import SwiftUI
 import CoreData
-import Combine
-
-
-class EventsListViewModel: ObservableObject {
-  @Published var events = [Event]()
-  
-  let pleasant: Bool
-  
-  private var anyCancellables = Set<AnyCancellable>()
-  
-  private let context: NSManagedObjectContext
-  
-  var ascending = false {
-    didSet {
-      loadData()
-    }
-  }
-  
-  init(pleasant: Bool, context: NSManagedObjectContext) {
-    self.context = context
-    self.pleasant = pleasant
-    
-    loadData()
-  }
-  
-  func loadData() {
-    let request = Event.fetchRequest()
-    request.sortDescriptors = [NSSortDescriptor(keyPath: \Event.timestamp, ascending: ascending)]
-    request.predicate = NSPredicate(format: "pleasant == %@", NSNumber(value: pleasant))
-    
-    do {
-      events = try context.fetch(request)
-    } catch {
-      print("Failed to fetch")
-    }
-  }
-  
-  func deleteItems(offsets: IndexSet) {
-    withAnimation {
-      offsets.map {
-        events[$0]
-      }.forEach(context.delete)
-      
-      do {
-        try context.save()
-        loadData()
-      } catch {
-        let nsError = error as NSError
-        fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-      }
-    }
-  }
-}
 
 struct EventsListView: View {
-  @Environment(\.managedObjectContext) private var viewContext
+  @Environment(\.managedObjectContext) private var context
   
   @State private var showAddEventView = false
   
@@ -112,13 +59,19 @@ struct EventsListView: View {
     }
     .navigationTitle(title)
     .sheet(isPresented: $showAddEventView, onDismiss: eventsListViewModel.loadData)  {
-      NewEventView(pleasant: eventsListViewModel.pleasant, context: viewContext)
+      NewEventView(pleasant: eventsListViewModel.pleasant, context: context)
     }
     .onAppear(perform: eventsListViewModel.loadData)
   }
 }
 
 private extension EventsListView {
+  func deleteItems(offsets: IndexSet) {
+    withAnimation {
+      eventsListViewModel.deleteItems(offsets: offsets)
+    }
+  }
+  
   private var title: String {
     "\(eventsListViewModel.pleasant ? "Pleasant" : "Unpleasant") Events"
   }
@@ -135,7 +88,7 @@ private extension EventsListView {
     List {
       ForEach(eventsListViewModel.events) { event in
         NavigationLink {
-          EventDetailsView(event: .init(event: event))
+          EventDetailsView(eventDetailsViewModel: EventDetailsViewModel(event: event, context: context, storage: CoreDataStorage()))
         } label: {
           VStack(alignment: .leading, spacing: 10) {
             Text(event.timestamp!, formatter: .itemFormatter)
@@ -148,7 +101,7 @@ private extension EventsListView {
           .padding(.vertical, 5)
         }
       }
-      .onDelete(perform: eventsListViewModel.deleteItems)
+      .onDelete(perform: deleteItems)
     }
   }
 }

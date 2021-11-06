@@ -18,19 +18,17 @@ enum Field: Int, Hashable {
 
 struct NewEventView: View {
   @Environment(\.presentationMode) var presentationMode
-  @Environment(\.managedObjectContext) private var viewContext
+  @Environment(\.managedObjectContext) private var context
   
   @ObservedObject private var viewModel: NewEventViewModel
   
-  
-  
   @FocusState private var focusedField: Field?
   
-  init(pleasant: Bool, context: NSManagedObjectContext) {
-    viewModel = NewEventViewModel(pleasant: pleasant, context: context)
-  }
-  
   private let textFieldSpacing: CGFloat = 7
+  
+  init(pleasant: Bool, context: NSManagedObjectContext, event: Event? = nil) {
+    viewModel = NewEventViewModel(pleasant: pleasant, context: context, event: event)
+  }
   
   var body: some View {
     NavigationView {
@@ -117,7 +115,7 @@ struct NewEventView: View {
         .padding()
       }
       .onAppear {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
           focusedField = .experience
         }
       }

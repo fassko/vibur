@@ -23,11 +23,27 @@ class NewEventViewModel: ObservableObject {
   
   private var anyCancellables = Set<AnyCancellable>()
   
+  private var event: Event?
+  
   private let context: NSManagedObjectContext
   
-  init(pleasant: Bool, context: NSManagedObjectContext) {
+  var editMode: Bool {
+    event != nil
+  }
+  
+  init(pleasant: Bool, context: NSManagedObjectContext, event: Event? = nil) {
     self.context = context
     self.pleasant = pleasant
+    self.event = event
+    
+    if editMode {
+      experience = event?.experience ?? ""
+      aware = event?.aware ?? false
+      feelings = event?.feelings ?? ""
+      moods = event?.moods ?? ""
+      thoughts = event?.thoughts ?? ""
+      thoughtsWriting = event?.thoughtsWriting ?? ""
+    }
     
     setupListeners()
   }
@@ -52,15 +68,26 @@ class NewEventViewModel: ObservableObject {
   }
   
   func save(completion: () -> ()) {
-    let event = Event(context: context)
-    event.timestamp = Date()
-    event.pleasant = pleasant
-    event.experience = experience
-    event.aware = aware
-    event.feelings = feelings
-    event.moods = moods
-    event.thoughts = thoughts
-    event.thoughtsWriting = thoughtsWriting
+    if editMode {
+      event?.experience = experience
+      event?.pleasant = pleasant
+      event?.experience = experience
+      event?.aware = aware
+      event?.feelings = feelings
+      event?.moods = moods
+      event?.thoughts = thoughts
+      event?.thoughtsWriting = thoughtsWriting
+    } else {
+      let event = Event(context: context)
+      event.timestamp = Date()
+      event.pleasant = pleasant
+      event.experience = experience
+      event.aware = aware
+      event.feelings = feelings
+      event.moods = moods
+      event.thoughts = thoughts
+      event.thoughtsWriting = thoughtsWriting
+    }
     
     do {
       try context.save()
