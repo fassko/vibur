@@ -54,7 +54,9 @@ class SettingsViewModel: ObservableObject {
         settings.authorizationStatus == .authorized ||
           settings.authorizationStatus == .provisional
       else {
-        self?.showNotificationSettingsUI = false
+        DispatchQueue.main.async { [weak self] in
+          self?.showNotificationSettingsUI = false
+        }
         self?.removeNotifications()
         return
       }
