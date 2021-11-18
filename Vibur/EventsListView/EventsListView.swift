@@ -80,7 +80,7 @@ private extension EventsListView {
       showLoading = false
       return
     }
-
+    
     eventsListViewModel.generateCSV { url in
       item = ActivityItem(
         items: url
@@ -108,8 +108,12 @@ private extension EventsListView {
     }
   }
   
+  private var pleasantUnpleasant: String {
+    eventsListViewModel.pleasant ? "Pleasant" : "Unpleasant"
+  }
+  
   private var title: String {
-    "\(eventsListViewModel.pleasant ? "Pleasant" : "Unpleasant") Events"
+    "\(pleasantUnpleasant) Events"
   }
   
   private var addButton: some View {
@@ -120,24 +124,43 @@ private extension EventsListView {
     .opacity(0)
   }
   
+  private var emptyView: some View {
+    VStack(spacing: 20) {
+      Text("No events found right now.")
+        .font(.title2)
+      
+      Button("Add New \(pleasantUnpleasant) Event") {
+        showAddEventView = true
+      }
+      LottieView(name: "empty-state", loopMode: .loop)
+        .frame(width: 250, height: 250)
+    }
+  }
+  
   private var eventsList: some View {
-    List {
-      ForEach(eventsListViewModel.events) { event in
-        NavigationLink {
-          EventDetailsView(eventDetailsViewModel: EventDetailsViewModel(event: event, context: context, storage: CoreDataStorage()))
-        } label: {
-          VStack(alignment: .leading, spacing: 10) {
-            Text(event.timestamp!, formatter: .itemFormatter)
-              .font(.subheadline)
-            
-            Text(event.experience ?? "")
-              .lineLimit(3)
-              .font(.body)
+    ZStack {
+      if eventsListViewModel.events.isEmpty {
+        emptyView
+      } else {
+        List {
+          ForEach(eventsListViewModel.events) { event in
+            NavigationLink {
+              EventDetailsView(eventDetailsViewModel: EventDetailsViewModel(event: event, context: context, storage: CoreDataStorage()))
+            } label: {
+              VStack(alignment: .leading, spacing: 10) {
+                Text(event.timestamp!, formatter: .itemFormatter)
+                  .font(.subheadline)
+                
+                Text(event.experience ?? "")
+                  .lineLimit(3)
+                  .font(.body)
+              }
+              .padding(.vertical, 5)
+            }
           }
-          .padding(.vertical, 5)
+          .onDelete(perform: deleteItems)
         }
       }
-      .onDelete(perform: deleteItems)
     }
   }
 }

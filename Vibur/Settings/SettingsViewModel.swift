@@ -1,18 +1,17 @@
 //
-//  SettingsView.swift
+//  SettingsViewModel.swift
 //  Vibur
 //
-//  Created by Kristaps Grinbergs on 06/11/2021.
+//  Created by Kristaps Grinbergs on 18/11/2021.
 //
 
-import SwiftUI
 import UIKit
 import Combine
 
-@MainActor
 class SettingsViewModel: ObservableObject {
-  @Published var showNotificationSettingsUI = false
   @Published var notificationTime: Date
+  @Published var notificationSettingsDisabledAlert = false
+  @Published var notificationsEnabled = false
   
   private var cancellables = Set<AnyCancellable>()
   
@@ -22,20 +21,43 @@ class SettingsViewModel: ObservableObject {
     setupListeners()
   }
   
-  func setupListeners() {
-    $showNotificationSettingsUI
-      .dropFirst()
-      .removeDuplicates()
-      .receive(on: DispatchQueue.main)
-      .sink { [weak self] showNotificationSettingsUI in
-        if showNotificationSettingsUI {
-          self?.checkNotificationSettings()
-        } else {
-          self?.removeNotifications()
+  func checkNotificationSettings() {
+    UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
+      guard
+        settings.authorizationStatus == .authorized ||
+          settings.authorizationStatus == .provisional
+      else {
+        DispatchQueue.main.async { [weak self] in
+          self?.notificationsEnabled = false
+        }
+        
+        self?.removeNotifications()
+        return
+      }
+      
+      DispatchQueue.main.async { [weak self] in
+        self?.notificationsEnabled = true
+      }
+      self?.scheduleNotification()
+    }
+  }
+  
+  func authorizeNotifications() {
+    UNUserNotificationCenter.current()
+      .requestAuthorization(options: [.alert, .sound, .badge]) { [weak self] granted, error  in
+        DispatchQueue.main.async {
+          if granted {
+            self?.notificationsEnabled = true
+          } else {
+            self?.notificationsEnabled = false
+            self?.notificationSettingsDisabledAlert = true
+            print("Can't register for notifications \(String(describing: error?.localizedDescription))")
+          }
         }
       }
-      .store(in: &cancellables)
-    
+  }
+  
+  private func setupListeners() {
     $notificationTime
       .removeDuplicates()
       .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
@@ -45,38 +67,6 @@ class SettingsViewModel: ObservableObject {
         self?.scheduleNotification()
       }
       .store(in: &cancellables)
-  }
-  
-  
-  func checkNotificationSettings() {
-    UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
-      guard
-        settings.authorizationStatus == .authorized ||
-          settings.authorizationStatus == .provisional
-      else {
-        DispatchQueue.main.async { [weak self] in
-          self?.showNotificationSettingsUI = false
-        }
-        self?.removeNotifications()
-        return
-      }
-      
-      DispatchQueue.main.async { [weak self] in
-        self?.showNotificationSettingsUI = true
-      }
-      self?.scheduleNotification()
-    }
-  }
-  
-  private func authorizeNotifications() {
-    UNUserNotificationCenter.current()
-      .requestAuthorization(options: [.alert, .sound, .badge]) { [weak self] granted, error  in
-        if granted {
-          self?.showNotificationSettingsUI = true
-        } else {
-          print("Can't register for notifications \(String(describing: error?.localizedDescription))")
-        }
-      }
   }
   
   private func scheduleNotification() {
@@ -110,36 +100,5 @@ class SettingsViewModel: ObservableObject {
   
   func removeNotifications() {
     UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-  }
-}
-
-struct SettingsView: View {
-  @StateObject var settingsViewModel = SettingsViewModel()
-  
-  var body: some View {
-    Form {
-      Section("Status") {
-        Toggle("Enable Notifications", isOn: $settingsViewModel.showNotificationSettingsUI)
-      }
-      
-      if settingsViewModel.showNotificationSettingsUI {
-        Section("Time") {
-          DatePicker("Sending Time Every Day", selection: $settingsViewModel.notificationTime, displayedComponents: .hourAndMinute)
-            .pickerStyle(.menu)
-        }
-      }
-    }
-    .onAppear {
-      settingsViewModel.checkNotificationSettings()
-    }
-    .navigationTitle("Settings")
-  }
-}
-
-struct SettingsView_Previews: PreviewProvider {
-  static var previews: some View {
-    NavigationView {
-      SettingsView()
-    }
   }
 }

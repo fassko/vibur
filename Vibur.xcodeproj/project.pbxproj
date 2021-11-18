@@ -25,6 +25,10 @@
 		63A8ECE92728842A002423F2 /* Formatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8ECE82728842A002423F2 /* Formatter+Extensions.swift */; };
 		63A8ECF0272888E1002423F2 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A8ECEF272888E1002423F2 /* CloudKit.framework */; };
 		63BAA935272737B10027E3AC /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BAA934272737B10027E3AC /* EventDetailsView.swift */; };
+		63BB0D6D2746D6070050422A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB0D6C2746D6070050422A /* SettingsViewModel.swift */; };
+		63BB0D702746DF3F0050422A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 63BB0D6F2746DF3F0050422A /* Lottie */; };
+		63BB0D722746DF680050422A /* empty-state.json in Resources */ = {isa = PBXBuildFile; fileRef = 63BB0D712746DF680050422A /* empty-state.json */; };
+		63BB0D742746DF7E0050422A /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB0D732746DF7E0050422A /* LottieView.swift */; };
 		63BE66902735CE4C00224558 /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BE668F2735CE4C00224558 /* UIDevice+Extensions.swift */; };
 		63BE6692273687A900224558 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BE6691273687A900224558 /* CoreDataStorage.swift */; };
 		63E1917D27306FE4008F979B /* NewEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E1917C27306FE4008F979B /* NewEventViewModel.swift */; };
@@ -59,6 +63,9 @@
 		63A8ECEF272888E1002423F2 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		63A8ECF127288B0C002423F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		63BAA934272737B10027E3AC /* EventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsView.swift; sourceTree = "<group>"; };
+		63BB0D6C2746D6070050422A /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		63BB0D712746DF680050422A /* empty-state.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "empty-state.json"; sourceTree = "<group>"; };
+		63BB0D732746DF7E0050422A /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		63BE668F2735CE4C00224558 /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extensions.swift"; sourceTree = "<group>"; };
 		63BE6691273687A900224558 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		63E1917C27306FE4008F979B /* NewEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewModel.swift; sourceTree = "<group>"; };
@@ -79,6 +86,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63A8ECF0272888E1002423F2 /* CloudKit.framework in Frameworks */,
+				63BB0D702746DF3F0050422A /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +172,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		63BB0D6B2746D5F00050422A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				638EC4D32736CB1A00DE603A /* SettingsView.swift */,
+				63BB0D6C2746D6070050422A /* SettingsViewModel.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		63E1917E27306FE8008F979B /* New Event */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,11 +215,13 @@
 				63A8ECED272888BE002423F2 /* Vibur.entitlements */,
 				63F55D8B27175B73001BC74A /* ViburApp.swift */,
 				63F55D8D27175B73001BC74A /* ContentView.swift */,
-				638EC4D32736CB1A00DE603A /* SettingsView.swift */,
 				638334D02731CD4A009DFD0D /* AboutView.swift */,
+				63BB0D712746DF680050422A /* empty-state.json */,
+				63BB0D732746DF7E0050422A /* LottieView.swift */,
 				638EC4BB27368EA800DE603A /* EventsListView */,
 				638EC4C02736904600DE603A /* EventDetails */,
 				63E1917E27306FE8008F979B /* New Event */,
+				63BB0D6B2746D5F00050422A /* Settings */,
 				63A8ECEC27288507002423F2 /* Core */,
 				63F55D8F27175B75001BC74A /* Assets.xcassets */,
 				63A8ECEA272884BB002423F2 /* Data */,
@@ -235,6 +254,9 @@
 			dependencies = (
 			);
 			name = Vibur;
+			packageProductDependencies = (
+				63BB0D6F2746DF3F0050422A /* Lottie */,
+			);
 			productName = Vibur;
 			productReference = 63F55D8827175B73001BC74A /* Vibur.app */;
 			productType = "com.apple.product-type.application";
@@ -263,6 +285,9 @@
 				Base,
 			);
 			mainGroup = 63F55D7F27175B73001BC74A;
+			packageReferences = (
+				63BB0D6E2746DF3F0050422A /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = 63F55D8927175B73001BC74A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -277,6 +302,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63BB0D722746DF680050422A /* empty-state.json in Resources */,
 				63F55D9327175B75001BC74A /* Preview Assets.xcassets in Resources */,
 				63F55D9027175B75001BC74A /* Assets.xcassets in Resources */,
 			);
@@ -300,6 +326,7 @@
 				638EC4DC2736D34000DE603A /* UserDefaultsConfig.swift in Sources */,
 				638EC4D02736AC7E00DE603A /* LoadingView.swift in Sources */,
 				63F55D9F27175FAB001BC74A /* EventsListView.swift in Sources */,
+				63BB0D742746DF7E0050422A /* LottieView.swift in Sources */,
 				63A8ECE92728842A002423F2 /* Formatter+Extensions.swift in Sources */,
 				638334D12731CD4A009DFD0D /* AboutView.swift in Sources */,
 				63E1917D27306FE4008F979B /* NewEventViewModel.swift in Sources */,
@@ -315,6 +342,7 @@
 				63F55D8C27175B73001BC74A /* ViburApp.swift in Sources */,
 				638EC4BF27368FC700DE603A /* Event+Extensions.swift in Sources */,
 				63BAA935272737B10027E3AC /* EventDetailsView.swift in Sources */,
+				63BB0D6D2746D6070050422A /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,7 +474,7 @@
 				CODE_SIGN_ENTITLEMENTS = Vibur/Vibur.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 38;
 				DEVELOPMENT_ASSET_PATHS = "\"Vibur/Preview Content\"";
 				DEVELOPMENT_TEAM = 3SGNZQGS68;
 				ENABLE_PREVIEWS = YES;
@@ -454,7 +482,6 @@
 				INFOPLIST_FILE = Vibur/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -462,7 +489,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.vibur;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.app.vibur";
@@ -481,7 +508,7 @@
 				CODE_SIGN_ENTITLEMENTS = Vibur/Vibur.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 38;
 				DEVELOPMENT_ASSET_PATHS = "\"Vibur/Preview Content\"";
 				DEVELOPMENT_TEAM = 3SGNZQGS68;
 				ENABLE_PREVIEWS = YES;
@@ -489,7 +516,6 @@
 				INFOPLIST_FILE = Vibur/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -497,7 +523,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.vibur;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -530,6 +556,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		63BB0D6E2746DF3F0050422A /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		63BB0D6F2746DF3F0050422A /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63BB0D6E2746DF3F0050422A /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		63F55D9627175B75001BC74A /* Vibur.xcdatamodeld */ = {
