@@ -18,6 +18,10 @@ extension UIDevice {
     idiom == .pad
   }
   
+  static var isiPhone: Bool {
+    idiom == .phone
+  }
+  
   static var isPortrait: Bool {
     UIDevice.current.orientation.isPortrait
   }

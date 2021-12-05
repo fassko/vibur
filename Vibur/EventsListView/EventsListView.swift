@@ -109,11 +109,11 @@ private extension EventsListView {
   }
   
   private var pleasantUnpleasant: String {
-    eventsListViewModel.pleasant ? "Pleasant" : "Unpleasant"
+    String(localized: eventsListViewModel.pleasant ? "Pleasant" : "Unpleasant")
   }
   
-  private var title: String {
-    "\(pleasantUnpleasant) Events"
+  private var title: LocalizedStringKey {
+    LocalizedStringKey("\(pleasantUnpleasant) Events")
   }
   
   private var addButton: some View {
@@ -126,10 +126,10 @@ private extension EventsListView {
   
   private var emptyView: some View {
     VStack(spacing: 20) {
-      Text("No events found right now.")
+      Text("No events found right now")
         .font(.title2)
       
-      Button("Add New \(pleasantUnpleasant) Event") {
+      Button("Add Event") {
         showAddEventView = true
       }
       LottieView(name: "empty-state", loopMode: .loop)

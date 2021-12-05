@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6319BF572729E6AA0034E867 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6319BF562729E6AA0034E867 /* String+Extensions.swift */; };
 		6364C4232734774C00848556 /* ViburTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364C4222734774C00848556 /* ViburTextEditor.swift */; };
+		636AC749275C949C008E071F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 636AC74B275C949C008E071F /* Localizable.strings */; };
 		638334D12731CD4A009DFD0D /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638334D02731CD4A009DFD0D /* AboutView.swift */; };
 		638EC4BD27368EB300DE603A /* EventsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638EC4BC27368EB300DE603A /* EventsListViewModel.swift */; };
 		638EC4BF27368FC700DE603A /* Event+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638EC4BE27368FC700DE603A /* Event+Extensions.swift */; };
@@ -45,6 +46,9 @@
 /* Begin PBXFileReference section */
 		6319BF562729E6AA0034E867 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		6364C4222734774C00848556 /* ViburTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViburTextEditor.swift; sourceTree = "<group>"; };
+		636AC74A275C949C008E071F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		636AC74D275C965F008E071F /* lv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = lv; path = lv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		636AC74E275CA8CA008E071F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		638334D02731CD4A009DFD0D /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		638EC4BC27368EB300DE603A /* EventsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListViewModel.swift; sourceTree = "<group>"; };
 		638EC4BE27368FC700DE603A /* Event+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+Extensions.swift"; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 				63BE6691273687A900224558 /* CoreDataStorage.swift */,
 				638EC4D12736B3AB00DE603A /* Array+Extensions.swift */,
 				638EC4D52736CEC800DE603A /* Pushnotificationmanager.swift */,
+				636AC74B275C949C008E071F /* Localizable.strings */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -283,6 +288,8 @@
 			knownRegions = (
 				en,
 				Base,
+				lv,
+				ru,
 			);
 			mainGroup = 63F55D7F27175B73001BC74A;
 			packageReferences = (
@@ -303,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63BB0D722746DF680050422A /* empty-state.json in Resources */,
+				636AC749275C949C008E071F /* Localizable.strings in Resources */,
 				63F55D9327175B75001BC74A /* Preview Assets.xcassets in Resources */,
 				63F55D9027175B75001BC74A /* Assets.xcassets in Resources */,
 			);
@@ -348,11 +356,25 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		636AC74B275C949C008E071F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				636AC74A275C949C008E071F /* en */,
+				636AC74D275C965F008E071F /* lv */,
+				636AC74E275CA8CA008E071F /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		63F55D9927175B75001BC74A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -414,6 +436,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -474,7 +497,7 @@
 				CODE_SIGN_ENTITLEMENTS = Vibur/Vibur.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 39;
 				DEVELOPMENT_ASSET_PATHS = "\"Vibur/Preview Content\"";
 				DEVELOPMENT_TEAM = 3SGNZQGS68;
 				ENABLE_PREVIEWS = YES;
@@ -508,7 +531,7 @@
 				CODE_SIGN_ENTITLEMENTS = Vibur/Vibur.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 39;
 				DEVELOPMENT_ASSET_PATHS = "\"Vibur/Preview Content\"";
 				DEVELOPMENT_TEAM = 3SGNZQGS68;
 				ENABLE_PREVIEWS = YES;

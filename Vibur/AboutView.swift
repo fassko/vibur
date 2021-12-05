@@ -19,10 +19,10 @@ struct AboutView: View {
         .frame(width: logoWidth)
         .padding()
       
-      Text("Unpleasant Events Calendar")
+      Text("Events Calendar")
         .font(.title2)
       
-      Text("Be aware of an unpleasant event at the time it is happening. Use these questions to focus your awareness on the details of the experience as it is happening. Write it down later.\n\nTry to record at least one unpleasant event each day.")
+      Text("Be aware of an event at the time it is happening. Use these questions to focus your awareness on the details of the experience as it is happening. Write it down later.\n\nTry to record at least one unpleasant event each day.")
         .multilineTextAlignment(.center)
       
       Text("This application is developed and maintained by [Kristaps Grinbergs](https://kristaps.me/)")

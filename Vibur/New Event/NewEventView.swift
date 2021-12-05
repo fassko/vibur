@@ -26,6 +26,22 @@ struct NewEventView: View {
   
   private let textFieldSpacing: CGFloat = 7
   
+  private var title: LocalizedStringKey {
+    if viewModel.pleasant {
+      return LocalizedStringKey("Pleasant Event")
+    } else {
+      return LocalizedStringKey("Unpleasant Event")
+    }
+  }
+  
+  private var awareQuestionTitle: LocalizedStringKey {
+    if viewModel.pleasant {
+      return LocalizedStringKey("Were you aware of the pleasant feelings while the event was happening?")
+    } else {
+      return ("Were you aware of the unpleasant feelings while the event was happening?")
+    }
+  }
+  
   init(pleasant: Bool, context: NSManagedObjectContext, event: Event? = nil) {
     viewModel = NewEventViewModel(pleasant: pleasant, context: context, event: event)
   }
@@ -119,7 +135,7 @@ struct NewEventView: View {
           focusedField = .experience
         }
       }
-      .navigationTitle("New \(viewModel.pleasant ? "Pleasant" : "Unpleasant") Event")
+      .navigationTitle(title)
       .toolbar {
         ToolbarItem {
           Button(action: closeWindow) {
