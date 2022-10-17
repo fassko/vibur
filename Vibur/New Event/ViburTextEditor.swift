@@ -14,6 +14,7 @@ struct ViburTextEditor: View {
   
   var body: some View {
     TextEditor(text: $text)
+      .frame(minHeight: 40)
       .padding(.horizontal, 5)
       .padding(.vertical, 3)
       .overlay(

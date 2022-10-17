@@ -203,7 +203,9 @@
 				63F55D8927175B73001BC74A /* Products */,
 				63A8ECEE272888E1002423F2 /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		63F55D8927175B73001BC74A /* Products */ = {
 			isa = PBXGroup;
@@ -586,7 +588,7 @@
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
+				minimumVersion = 3.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
